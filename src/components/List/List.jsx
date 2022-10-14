@@ -5,14 +5,8 @@ import css from './List.module.css';
 
 export const List = () => {
   const [users, setUsers] = useState([]);
-  const {
-    isLoading,
-    data: response,
-    error,
-    refetch,
-  } = useQuery('users list', () => getAll(), {
+  const { isLoading, error, refetch } = useQuery('users list', () => getAll(), {
     onSuccess: ({ data }) => {
-      // console.log(data);
       setUsers(data);
     },
     onError: error => {
@@ -29,8 +23,6 @@ export const List = () => {
     //   });
     // },
   });
-
-  console.log(users);
 
   return (
     <div className={css.Wrapper}>
